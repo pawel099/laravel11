@@ -9,12 +9,15 @@
         "funayaki/bootstrap-ui": "^0.3.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "laravel/ui": "^4.5"
+        "laravel/ui": "^4.5",
+        "spatie/laravel-login-link": "^1.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
+        "laravel/breeze": "^2.0",
+        "laravel/pint": "^1.15",
         "laravel/sail": "^1.26",
+        "laravel/telescope": "^5.0",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "phpunit/phpunit": "^10.5",
