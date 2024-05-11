@@ -1,15 +1,11 @@
 <?php
 
-// contakts
-
-
-// 92a9395fbdd6374c6bd2761ec46a14e97d8d7003
-namespace App\Http\Controllers;
+ namespace App\Http\Controllers;
 
 use App\Models\contacts;
 use Illuminate\Http\Request;
 
-class ContactsController extends Controller
+class SendController extends Controller
 {
     /**
      * Display a listing of the resource.
