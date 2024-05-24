@@ -39,7 +39,7 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{route('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
@@ -47,6 +47,14 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('admin-dashboard')">Panel</a>
+                                 
+                            </x-dropdown-link>
+                            
+
+
+
                         </form>
                     </x-slot>
                 </x-dropdown>
@@ -69,6 +77,7 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+                 
             </x-responsive-nav-link>
         </div>
 

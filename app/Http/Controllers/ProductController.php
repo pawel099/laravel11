@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function logIn() {
 
-        return view ('admin');
+        return view ('components.welcome');
          
      }
 }
