@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class="flex gap-8 bg-white dark:bg-gray-900">
         <x-sidebar class="min-w-fit flex-grow-0 flex-shrink-0 hidden md:block"/>
         <main class="mt-4 px-4">
@@ -20,6 +21,7 @@
             <x-footer />
         </main>
     </div>
+     
 </body>
 
 </html>

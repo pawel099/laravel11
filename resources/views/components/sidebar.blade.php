@@ -1,13 +1,16 @@
  
  <aside {{ $attributes }} aria-label="Sidebar">
-    <div class="overflow-y-auto py-4 pl-4 pr-16 h-screen bg-gray-50 rounded dark:bg-gray-800">
+
+ 
+
+<div class="overflow-y-auto py-4 pl-4 pr-16 h-screen bg-gray-50 rounded dark:bg-gray-800">
         <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
             <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
         </a>
         <ul class="space-y-2">
             <li>
-                <a href="#"
+                <a href="{{route('admin-dashboard')}}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -33,6 +36,33 @@
                         class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{route('product')}}"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 .087.586l2.977-7.937A1 1 0 0 1 6 10h12V9a2 2 0 0 0-2-2h-4.532l-1.9-2.28A2 2 0 0 0 8.032 4H4Zm2.693 8H6.5l-3 8H18l3-8H6.693Z" clip-rule="evenodd"/>
+                    </svg>
+
+                    <span class="flex-1 ml-3 whitespace-nowrap">product</span>
+                    
+                         
+                </a>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+             
             <li>
                 <a href="#"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -53,6 +83,29 @@
             </li>
         </ul>
     </div>
+
+
+
+
+<!-- Dropdown menu -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </aside>
 
 

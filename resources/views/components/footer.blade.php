@@ -20,8 +20,7 @@
                 </svg>
                 <span class="sr-only">Twitter page</span>
             </a>
-
-        </div>
+         </div>
     </div>
 </footer>
 
