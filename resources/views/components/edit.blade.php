@@ -1,18 +1,42 @@
 <x-layout>
+ 
+<div>
+@if (session('message'))
+<div id="alert-additional-content-3" class="p-4 mb-4 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+  <div class="flex items-center">
+    <svg class="flex-shrink-0 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <span class="sr-only">Info</span>
+    <h3 class="text-lg font-medium">{{session('message')}} </h3>
+  </div>
+  @endif
+</div>
 
-<div style="width: 1000px;margin: 0 auto;"> 
-    
+
+<script type="text/javascript"> 
+   tinymce.init({
+
+     selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
+     plugins: 'powerpaste advcode table lists checklist',
+     toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+
+   });
+
+</script>
+ 
 <form method="POST" action="{{route('updated_post',$product->id)}}" enctype="multipart/form-data">
 @csrf
 
  <div class="mb-5">
     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">product name</label>
-    <input type="text" id="name" name="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$product->name}}" required />
+    <input type="text" id="name" name="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$product->name}}" required />
+    @error('name')
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            {{$message}}
+            @enderror
   </div>
-  
-  <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+   <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
        <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
            <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
                <div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
@@ -91,32 +115,40 @@
        </div>
        <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
            <label for="editor" class="sr-only">Publish post</label>
-           <textarea id="description" rows="8" name="description" class="block w-full px-0 text-sm text-gray-800 bg-white 
-           border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" required>
-           {{$product->description}}
-           </textarea>
+           <textarea id="description" rows="8" name="description" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400">{{$product->description}}</textarea>
+            
        </div>
    </div>
 
    <div class="mb-5">
-    <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">amount</label>
-    <input type="text" id="amount" name="amount" value="{{$product->amount}}"
-    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-    text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 
-    dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-  </div>
-   <div class="mb-5">
-    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">price</label>
-    <input type="text" id="price" name="price" 
-    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-    text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 
-    dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  value="{{$product->price}}" required />
+    <label style="padding-top:20px;" for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" value="{{$product->amount}}">amount</label>
+    <input id="amount" type="number" min="0" id="amount" name="amount" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$product->amount}}" required />
+    @error('amount')
+            <x-input-error :messages="$errors->get('amount')" class="mt-2" />
+            {{$message}}
+            @enderror
   </div>
 
-<button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+  <label style="padding-top:20px;" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files"></label>
+  <input style="margin-top:20px;" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" value="{{$product->thumbnail}}" name="thumbnail" id="thumbnail" type="file" multiple  ><p> 
+  @error('thumbnail')
+            <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
+            {{$message}}
+            @enderror
+
+   <div class="mb-5">
+    <label style="padding-top:20px;" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">price</label>
+    <input id="price" type="number" step="0.01" min="0" name="price" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$product->price}}" required />
+    @error('price')
+            <x-input-error :messages="$errors->get('price')" class="mt-2" />
+            {{$message}}
+            @enderror
+  </div>
+   <button style="margin-top:23px;margin-left:900px;" type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
        send
    </button>
 </form>
-</div>
+ 
  
 </x-layout>
+
